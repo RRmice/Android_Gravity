@@ -2,8 +2,10 @@ package com.example.android_gravity.clases;
 
 import com.example.android_gravity.generator.GeneratorBackground;
 import com.example.android_gravity.generator.GeneratorEnemy;
+import com.example.android_gravity.objects.Enemy;
 import com.example.android_gravity.objects.HUD;
 import com.example.android_gravity.objects.MainPlayer;
+import com.example.my_framework.CollisionDetect;
 import com.example.my_framework.CoreFW;
 import com.example.my_framework.GraphicsFW;
 
@@ -52,6 +54,28 @@ public class GameManager {
         currentShieldsPlayer = mainPlayer.getShieldsPlayer();
 
         hud.update(passedDistance, currentSpeedPlayer, currentShieldsPlayer);
+
+        checkHit();
+
+    }
+
+    private void checkHit() {
+
+//        for (Enemy e: generatorEnemy.enemyArrayList) {
+//            if (CollisionDetect.collisionDetect(mainPlayer, e)){
+//                mainPlayer.hitEnemy();
+//                generatorEnemy.hitPlayer(e);
+//            }
+//        }
+
+        for (int i = 0; i < generatorEnemy.enemyArrayList.size(); i++) {
+            Enemy currentEnemy = generatorEnemy.enemyArrayList.get(i);
+            if(CollisionDetect.collisionDetect(mainPlayer, currentEnemy)){
+                mainPlayer.hitEnemy();
+                generatorEnemy.hitPlayer(currentEnemy);
+            }
+        }
+
     }
 
     public void drawing(CoreFW coreFW, GraphicsFW graphicsFW){

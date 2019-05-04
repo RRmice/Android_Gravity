@@ -1,5 +1,7 @@
 package com.example.android_gravity.objects;
 
+import android.graphics.Rect;
+
 import com.example.my_framework.AnimationFW;
 import com.example.my_framework.CoreFW;
 import com.example.my_framework.GraphicsFW;
@@ -27,6 +29,8 @@ public class MainPlayer extends ObjectFW {
         speed = 3;
         boosting = false;
         shieldsPlayer = 3;
+
+        radius = UtilResource.spritePlayer.get(0).getWidth()/4;
 
         this.coreFW = coreFW;
 
@@ -79,6 +83,11 @@ public class MainPlayer extends ObjectFW {
             animMainPlayer.runAnimation();
         }
 
+
+        hitBox = new Rect(x, y,
+                UtilResource.spritePlayer.get(0).getWidth(),
+                UtilResource.spritePlayer.get(0).getHeight());
+
     }
 
     private void stopBoosting() {
@@ -104,5 +113,9 @@ public class MainPlayer extends ObjectFW {
 
     public int getShieldsPlayer(){
         return shieldsPlayer;
+    }
+
+    public void hitEnemy() {
+        shieldsPlayer--;
     }
 }

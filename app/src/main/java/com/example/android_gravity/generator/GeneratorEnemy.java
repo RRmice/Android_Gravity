@@ -14,7 +14,7 @@ public class GeneratorEnemy extends ObjectFW {
     private int minScreenX;
     private int minScreenY;
 
-    ArrayList<Enemy> enemyArrayList;
+    public ArrayList<Enemy> enemyArrayList;
 
     public GeneratorEnemy(int screenWidth, int screenHeight,  int minScreenY) {
 
@@ -51,4 +51,7 @@ public class GeneratorEnemy extends ObjectFW {
     }
 
 
+    public void hitPlayer(Enemy enemy) {
+            enemyArrayList.remove(enemy);
+    }
 }

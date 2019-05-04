@@ -1,5 +1,7 @@
 package com.example.android_gravity.objects;
 
+import android.graphics.Rect;
+
 import com.example.android_gravity.utilits.UtilResource;
 import com.example.my_framework.AnimationFW;
 import com.example.my_framework.GraphicsFW;
@@ -17,6 +19,8 @@ public class Enemy extends ObjectFW {
 
         this.MinScreenY = minScreenY;
         this.MinScreenX = 0;
+
+        radius = UtilResource.spriteEnemy.get(0).getWidth()/2;
 
         x = maxScreenX;
         y = UtilRandomFW.getGap(minScreenY, maxScreenY);
@@ -44,6 +48,10 @@ public class Enemy extends ObjectFW {
         }
 
         animEnemy.runAnimation();
+
+        hitBox = new Rect(x, y,
+                UtilResource.spriteEnemy.get(0).getWidth(),
+                UtilResource.spriteEnemy.get(0).getHeight());
     }
 
     public void drawing(GraphicsFW graphicsFW){
