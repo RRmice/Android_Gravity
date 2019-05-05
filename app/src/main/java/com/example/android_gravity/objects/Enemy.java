@@ -20,7 +20,7 @@ public class Enemy extends ObjectFW {
         this.MinScreenY = minScreenY;
         this.MinScreenX = 0;
 
-        radius = UtilResource.spriteEnemy.get(0).getWidth()/2;
+        radius = UtilResource.spriteEnemy.get(0).getWidth()/4;
 
         x = maxScreenX;
         y = UtilRandomFW.getGap(minScreenY, maxScreenY);

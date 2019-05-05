@@ -25,6 +25,8 @@ public class GameManager {
     private int currentSpeedPlayer;
     private int currentShieldsPlayer;
 
+    public static boolean gameOver;
+
     HUD hud;
 
     public GameManager(CoreFW coreFW, int screenWidth, int screenHeight){
@@ -41,6 +43,7 @@ public class GameManager {
         generatorBackground = new GeneratorBackground(screenWidth, screenHeight, minScreenY);
 
         generatorEnemy = new GeneratorEnemy(screenWidth, screenHeight, minScreenY);
+        gameOver = false;
 
     }
 
@@ -61,13 +64,6 @@ public class GameManager {
 
     private void checkHit() {
 
-//        for (Enemy e: generatorEnemy.enemyArrayList) {
-//            if (CollisionDetect.collisionDetect(mainPlayer, e)){
-//                mainPlayer.hitEnemy();
-//                generatorEnemy.hitPlayer(e);
-//            }
-//        }
-
         for (int i = 0; i < generatorEnemy.enemyArrayList.size(); i++) {
             Enemy currentEnemy = generatorEnemy.enemyArrayList.get(i);
             if(CollisionDetect.collisionDetect(mainPlayer, currentEnemy)){
@@ -86,4 +82,7 @@ public class GameManager {
         hud.drawing(graphicsFW);
     }
 
+    public int getPassedDistance() {
+        return passedDistance;
+    }
 }
