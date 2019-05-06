@@ -4,7 +4,7 @@ import android.graphics.Color;
 
 import com.example.android_gravity.R;
 import com.example.android_gravity.clases.GameManager;
-import com.example.android_gravity.generator.GeneratorBackground;
+import com.example.android_gravity.utilits.SettingsGame;
 import com.example.my_framework.CoreFW;
 import com.example.my_framework.SceneFW;
 
@@ -71,6 +71,8 @@ public class GameScene extends SceneFW {
     }
 
     private void updateStateGameOver() {
+
+        SettingsGame.addDistance(gameManager.getPassedDistance());
 
         if(coreFW.getTouchListenerFW().getTouchUp(250, 360, 100, 35)){
             coreFW.setScene(new GameScene(coreFW));

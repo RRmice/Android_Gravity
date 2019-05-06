@@ -1,5 +1,6 @@
 package com.example.my_framework;
 
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.os.Bundle;
@@ -28,10 +29,16 @@ public class CoreFW extends AppCompatActivity {
     private boolean stateOnPause;
     private boolean stateOnResume;
 
+    private SharedPreferences sharedPreferences;
+    private final String SETTINGS = "settings";
+
    @Override
    protected void onCreate(@Nullable Bundle savedInstanceState){
        super.onCreate(savedInstanceState);
        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON); //Запрет перехода в спящий режим (требуется разрешение)
+
+       sharedPreferences = getSharedPreferences(SETTINGS, MODE_PRIVATE);
+
 
        sizeDisplay = new Point();
        display = getWindowManager().getDefaultDisplay();
@@ -105,5 +112,9 @@ public class CoreFW extends AppCompatActivity {
 
     public SceneFW getStartScene(){
        return sceneFW;
+    }
+
+    public SharedPreferences getSharedPreferences() {
+        return sharedPreferences;
     }
 }
